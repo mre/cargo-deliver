@@ -16,7 +16,7 @@ fn main() {
         println!("Cannot find goreleaser. Get it from https://goreleaser.com/")
     }
 
-    cmd!("goreleaser")
+    cmd!("goreleaser", "--rm-dist")
         .read()
         .expect("Failure! Is goreleaser installed?");
 }

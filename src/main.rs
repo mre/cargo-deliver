@@ -3,6 +3,9 @@ extern crate duct;
 
 use std::env;
 use std::ffi::OsString;
+use std::path::Path;
+
+static GORLEASER_CONFIG: &'static str = ".goreleaser.yml";
 
 pub fn has_cmd(cmd: &str) -> bool {
     let path = env::var_os("PATH").unwrap_or(OsString::new());
@@ -14,6 +17,10 @@ pub fn has_cmd(cmd: &str) -> bool {
 fn main() {
     if !has_cmd("goreleaser") {
         println!("Cannot find goreleaser. Get it from https://goreleaser.com/")
+    }
+
+    if !Path::new(GORLEASER_CONFIG).exists() {
+        println!("yolo")
     }
 
     cmd!("goreleaser", "--rm-dist")

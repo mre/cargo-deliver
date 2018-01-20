@@ -9,7 +9,7 @@ It's still experimental.
 
 ## Usage
 
-Add a `.goreleaser.yml` to your project. Here is an example:
+1. Add a `.goreleaser.yml` to your project. Here is an example:
 
 ```
 rust:
@@ -26,7 +26,15 @@ archive:
     linux: Linux
 ```
 
-After that run the following command
+2. Tag your current commit, e.g.
+
+```
+git tag -a "v0.1.0"
+```
+
+3. Next, you need to export a `GITHUB_TOKEN` environment variable, which should contain a GitHub token with the repo scope selected. It will be used to deploy releases to your GitHub repository. Create a token [here](https://github.com/settings/tokens/new).
+
+4. Run the following command
 
 ```
 cargo ship

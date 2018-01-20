@@ -1,0 +1,12 @@
+rust:
+- target:
+  - x86_64-apple-darwin
+  binary: cargo-ship
+
+# Archive customization
+archive:
+  format: tar.gz
+  replacements:
+    amd64: 64-bit
+    darwin: macOS
+    linux: Linux

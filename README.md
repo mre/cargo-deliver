@@ -7,11 +7,26 @@ This will use [goreleaser](https://goreleaser.com) to deploy your Rust binaries 
 It's still experimental.
 
 
+## Installation
+
+```
+cargo install cargo-ship
+```
+
+To upgrade:
+
+```
+cargo install --force cargo-ship
+```
+
+Or clone and build with `$ cargo build --release` then place in your $PATH.
+
+
 ## Usage
 
 1. Add a `.goreleaser.yml` to your project. Here is an example:
 
-```
+```yaml
 rust:
 - target:
   - x86_64-apple-darwin

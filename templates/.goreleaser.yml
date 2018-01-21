@@ -1,7 +1,9 @@
 rust:
 - target:
-  - x86_64-apple-darwin
-  binary: cargo-ship
+  {% for target in targets %}
+    - {{ target }}
+  {% endfor %}
+  binary: {{ binary_name }}
 
 # Archive customization
 archive:

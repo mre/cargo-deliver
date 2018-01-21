@@ -1,4 +1,4 @@
-# cargo-ship
+# cargo-distribute
 
 
 ## What is it?
@@ -10,13 +10,13 @@ It's still experimental.
 ## Installation
 
 ```
-cargo install cargo-ship
+cargo install cargo-distribute
 ```
 
 To upgrade:
 
 ```
-cargo install --force cargo-ship
+cargo install --force cargo-distribute
 ```
 
 Or clone and build with `$ cargo build --release` then place in your $PATH.
@@ -41,6 +41,13 @@ archive:
     linux: Linux
 ```
 
+You can get a list of all possible targets with 
+
+```
+rustc --print target-list
+```
+
+
 2. Tag your current commit, e.g.
 
 ```
@@ -52,5 +59,5 @@ git tag -a "v0.1.0"
 4. Run the following command
 
 ```
-cargo ship
+cargo deploy
 ```

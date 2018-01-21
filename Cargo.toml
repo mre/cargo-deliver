@@ -1,6 +1,6 @@
 [package]
 authors = ["Matthias Endler <matthias-endler@gmx.net>"]
-name = "cargo-distribute"
+name = "cargo-deliver"
 version = "0.2.0"
 
 [dependencies]

@@ -1,4 +1,4 @@
-# cargo-distribute
+# cargo-deliver
 
 
 ## What is it?
@@ -10,13 +10,13 @@ It's still experimental.
 ## Installation
 
 ```
-cargo install cargo-distribute
+cargo install cargo-deliver
 ```
 
 To upgrade:
 
 ```
-cargo install --force cargo-distribute
+cargo install --force cargo-deliver
 ```
 
 Or clone and build with `$ cargo build --release` then place in your $PATH.
@@ -59,5 +59,5 @@ git tag -a "v0.1.0"
 4. Run the following command
 
 ```
-cargo deploy
+cargo deliver
 ```

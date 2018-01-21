@@ -40,7 +40,7 @@ pub fn has_cmd(cmd: &str) -> bool {
 
 fn create_goreleaser_config() -> Result<String> {
     let mut context = Context::new();
-    context.add("binary_name", &"cargo-distribute");
+    context.add("binary_name", &"cargo-deliver");
     context.add("targets", &vec!["x86_64-apple-darwin"]);
     Ok(TEMPLATES
         .render(GORLEASER_CONFIG, &context)

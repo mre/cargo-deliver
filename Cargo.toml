@@ -7,9 +7,8 @@ license = "MIT"
 keywords = [
     "cargo",
     "cargo-subcommand",
-    "cli",
-    "dependencies",
-    "crates",
+    "publish",
+    "github",
     "goreleaser",
 ]
 categories = [

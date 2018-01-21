@@ -4,7 +4,7 @@
 ## What is it?
 
 This will use [goreleaser](https://goreleaser.com) to deploy your Rust binaries to Github/Artifactory/Dockerhub.
-It's still experimental.
+It's still experimental and will only work once/if [Rust support gets added to goreleaser](https://github.com/goreleaser/goreleaser/issues/496#issuecomment-359209326) .
 
 
 ## Installation

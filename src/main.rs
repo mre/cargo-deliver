@@ -19,7 +19,6 @@ use tera::{Context, Tera};
 use std::fs::File;
 use std::io::Write;
 use std::env;
-use std::ffi::OsString;
 use std::path::Path;
 use std::result;
 use std::process;
@@ -36,7 +35,7 @@ lazy_static! {
 }
 
 pub fn has_cmd(cmd: &str) -> bool {
-    let path = env::var_os("PATH").unwrap_or(OsString::new());
+    let path = env::var_os("PATH").unwrap_or_default();
     env::split_paths(&path)
         .map(|p| p.join(&cmd))
         .any(|p| p.exists())
@@ -47,8 +46,10 @@ fn get_binary_name() -> String {
     metadata.packages[0].clone().name
 }
 
-/// For now, we only try to get the default target via rustup
-/// See https://github.com/rust-lang-nursery/rustup.rs/issues/450
+/// For now, we only try to get the default target via rustup.
+/// We retrieve this information by parsing the output of `rustc`.
+/// TODO: Switch to machine-readable output as soon as it gets
+/// [supported](https://github.com/rust-lang-nursery/rustup.rs/issues/450).
 fn get_targets() -> Result<Vec<String>> {
     let re = Regex::new(r"(stable|beta|nightly)(-[\d-]+)?-(?P<target>.+)").unwrap();
     let output = cmd!("rustc", "--print", "sysroot").read()?;
@@ -65,7 +66,7 @@ fn create_goreleaser_config() -> Result<String> {
         .map_err(SyncFailure::new)?)
 }
 
-fn write_config(content: String) -> Result<()> {
+fn write_config(content: &str) -> Result<()> {
     let mut output = File::create(GORLEASER_CONFIG)?;
     Ok(output.write_all(content.as_bytes())?)
 }
@@ -82,14 +83,14 @@ fn main() {
         )).unwrap();
         match reply.as_ref() {
             "y" => create_goreleaser_config()
-                .and_then(|rendered| Ok(write_config(rendered)?))
+                .and_then(|rendered| Ok(write_config(&rendered)?))
                 .and_then(|_| {
                     Ok(println!(
                         "Done. Please review the config file at {} and re-run the command.",
                         GORLEASER_CONFIG
                     ))
                 })
-                .and_then(|_| Ok(process::exit(0)))
+                .and_then(|_| process::exit(0))
                 .expect(&format!("Cannot create `{}`", GORLEASER_CONFIG)),
             _ => return,
         };

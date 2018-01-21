@@ -2,6 +2,24 @@
 authors = ["Matthias Endler <matthias-endler@gmx.net>"]
 name = "cargo-deliver"
 version = "0.2.0"
+description = "Run goreleaser from Rust to deploy your Rust binaries to Github/Artifactory/Dockerhub"
+license = "MIT"
+keywords = [
+    "cargo",
+    "cargo-subcommand",
+    "cli",
+    "dependencies",
+    "crates",
+    "goreleaser",
+]
+categories = [
+    "development-tools",
+    "development-tools::cargo-plugins",
+]
+homepage = "https://github.com/mre/cargo-deliver"
+documentation = "https://github.com/mre/cargo-deliver"
+repository = "https://github.com/mre/cargo-deliver"
+readme = "README.md"
 
 [dependencies]
 duct = "0.9.2"

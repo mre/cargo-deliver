@@ -1,9 +1,13 @@
 [package]
 authors = ["Matthias Endler <matthias-endler@gmx.net>"]
 name = "cargo-deliver"
-version = "0.2.0"
+categories = [
+    "development-tools",
+    "development-tools::cargo-plugins",
+]
 description = "Run goreleaser from Rust to deploy your Rust binaries to Github/Artifactory/Dockerhub"
-license = "MIT"
+documentation = "https://github.com/mre/cargo-deliver"
+homepage = "https://github.com/mre/cargo-deliver"
 keywords = [
     "cargo",
     "cargo-subcommand",
@@ -11,16 +15,13 @@ keywords = [
     "github",
     "goreleaser",
 ]
-categories = [
-    "development-tools",
-    "development-tools::cargo-plugins",
-]
-homepage = "https://github.com/mre/cargo-deliver"
-documentation = "https://github.com/mre/cargo-deliver"
-repository = "https://github.com/mre/cargo-deliver"
+license = "MIT"
 readme = "README.md"
+repository = "https://github.com/mre/cargo-deliver"
+version = "0.2.0"
 
 [dependencies]
+cargo_metadata = "0.4.1"
 duct = "0.9.2"
 failure = "0.1.1"
 failure_derive = "0.1.1"

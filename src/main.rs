@@ -1,6 +1,9 @@
 #[macro_use]
 extern crate duct;
 
+extern crate cargo_metadata;
+extern crate regex;
+
 #[macro_use]
 extern crate lazy_static;
 extern crate rprompt;
@@ -20,6 +23,7 @@ use std::ffi::OsString;
 use std::path::Path;
 use std::result;
 use std::process;
+use regex::Regex;
 
 pub type Result<T> = result::Result<T, failure::Error>;
 
@@ -38,10 +42,24 @@ pub fn has_cmd(cmd: &str) -> bool {
         .any(|p| p.exists())
 }
 
+fn get_binary_name() -> String {
+    let metadata = cargo_metadata::metadata(None).unwrap();
+    metadata.packages[0].clone().name
+}
+
+/// For now, we only try to get the default target via rustup
+/// See https://github.com/rust-lang-nursery/rustup.rs/issues/450
+fn get_targets() -> Result<Vec<String>> {
+    let re = Regex::new(r"(stable|beta|nightly)(-[\d-]+)?-(?P<target>.+)").unwrap();
+    let output = cmd!("rustc", "--print", "sysroot").read()?;
+    let captures = re.captures(&output).unwrap();
+    Ok(vec![captures["target"].into()])
+}
+
 fn create_goreleaser_config() -> Result<String> {
     let mut context = Context::new();
-    context.add("binary_name", &"cargo-deliver");
-    context.add("targets", &vec!["x86_64-apple-darwin"]);
+    context.add("binary_name", &get_binary_name());
+    context.add("targets", &get_targets()?);
     Ok(TEMPLATES
         .render(GORLEASER_CONFIG, &context)
         .map_err(SyncFailure::new)?)

@@ -1,7 +1,7 @@
 rust:
 - target:
   - x86_64-apple-darwin
-  binary: cargo-ship
+  binary: cargo-deliver
 
 # Archive customization
 archive:

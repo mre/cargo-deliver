@@ -41,6 +41,7 @@ dependencies = [
  "failure 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure_derive 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "lazy_static 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "regex 0.2.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "rprompt 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "tera 0.10.10 (registry+https://github.com/rust-lang/crates.io-index)",
 ]

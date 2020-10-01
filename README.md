@@ -1,3 +1,9 @@
+# Deprecated
+
+This project is no longer under active development.
+
+Please use [cargo-release](https://github.com/sunng87/cargo-release) instead.
+
 # cargo-deliver
 
 

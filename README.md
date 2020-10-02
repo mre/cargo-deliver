@@ -1,8 +1,8 @@
 # Deprecated
 
 This project is no longer under active development.
-
-Please use [cargo-release](https://github.com/sunng87/cargo-release) instead.
+Your best bet might be https://medium.com/@jondot/shipping-rust-binaries-with-goreleaser-d5aa42a46be0.
+Please let us know if you find a better solution and we'll update that section.
 
 # cargo-deliver
 
